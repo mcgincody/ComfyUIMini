@@ -1,10 +1,10 @@
 {
-  "3": {
+    "3": {
     "inputs": {
-      "seed": 156680208700286,
-      "steps": 20,
-      "cfg": 8,
-      "sampler_name": "euler",
+      "seed": "1",
+      "steps": 30,
+      "cfg": 3,
+      "sampler_name": "euler_ancestral",
       "scheduler": "normal",
       "denoise": 1,
       "model": [
@@ -31,17 +31,17 @@
   },
   "4": {
     "inputs": {
-      "ckpt_name": "v1-5-pruned.ckpt"
+      "ckpt_name": "plantMilkModelSuite_walnut.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
       "title": "Load Checkpoint"
     }
   },
-  "5": {
+   "5": {
     "inputs": {
-      "width": 512,
-      "height": 512,
+      "width": 1440,
+      "height": 1024,
       "batch_size": 1
     },
     "class_type": "EmptyLatentImage",
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "beautiful scenery nature glass bottle landscape, , purple galaxy bottle,",
+      "text": "positive",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "text, watermark",
+      "text": "(worst quality, bad quality:1.2),low quality,simple background,transparent,logo,text,jpeg artifacts,bad anatomy,old,early,copyright name,watermark,artist name,signature,bad hands,bad fingers,child, loli, symbol-shaped pupils,lips,multicolored hair,simple background, bangs",
       "clip": [
         "4",
         1
@@ -95,13 +95,41 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "8",
+        "15",
         0
       ]
     },
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
+    }
+  },
+  "12": {
+    "inputs": {
+      "model_name": "4x-AnimeSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "15": {
+    "inputs": {
+      "upscale_by": 2.25,
+      "rescale_method": "nearest-exact",
+      "upscale_model": [
+        "12",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "UpscaleImageByUsingModel",
+    "_meta": {
+      "title": "Upscale Image By (Using Model)"
+      }
     }
   },
   "_comfyuimini_meta": {
